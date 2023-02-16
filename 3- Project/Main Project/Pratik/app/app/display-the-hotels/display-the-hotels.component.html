@@ -1,0 +1,35 @@
+
+<table class="table table-hover">
+<thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">State</th>
+      <th scope="col">City</th>
+      <th scope="col">Pincode</th>
+       <th scope="col">Room Type</th>
+       <th scope="col">Rent</th>
+	  <th scope="col">Book</th>
+    </tr>
+  </thead>
+
+
+  <tbody *ngFor='let hotels of hotel'>
+    <tr class="table-warning">
+
+      <th scope="row">{{hotels.hotelId}}</th>
+      <td>{{hotels.hotelName}}</td>
+      <td>{{hotels.state}}</td>
+    <td>{{hotels.city}}</td>
+    <td>{{hotels.pinCode}}</td>
+    <td>{{hotels.roomType}}</td>
+    <td>{{hotels.rent}}</td>
+
+    <td><button class="btn btn-danger" (click)="forward(hotels.hotelId)" >Book</button></td>
+    </tr>
+
+
+
+   </tbody>
+
+</table>

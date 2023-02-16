@@ -1,0 +1,55 @@
+<div class="card text-white bg-info mb-3" style="max-width: 20rem; margin-top: 20px;">
+    <div class="card-header">Quick Booking</div>
+    <div class="card-body">
+
+        <form #bookForm="ngForm" (ngSubmit)="onSubmit()">
+            2 way binding = {{bookingForm | json }}
+
+            <hr>
+
+            <div class="form-group">
+                <label for="">State </label>
+
+                <select (blur)="validateState(state.value)" (change)="validateState(state.value)" class="custom-select"
+                    [class.is-invalid]="stateHasError && state.touched" name="selectedState"
+                    [(ngModel)]="bookingForm.state" #state="ngModel">
+                    <option value="">I want to visit</option>
+                    <option *ngFor="let state of states">{{state}}</option>
+                </select>
+
+                <small class="text-warning" [class.d-none]="!stateHasError || state.untouched">Please choose a
+                    state.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="">Check in date</label>
+                <input (change)="checkDates(checkin.value, checkout.value)" type="date" class="form-control"
+                    [class.is-invalid]="checkin.invalid && checkin.touched" name="checkin"
+                    [(ngModel)]="bookingForm.checkin" #checkin="ngModel" required>
+
+                <small class="text-warning" [class.d-none]="checkin.valid || checkin.untouched">Check in date is
+                    required.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="">Check out date</label>
+                <input (change)="checkDates(checkin.value, checkout.value)" type="date" class="form-control"
+                    [class.is-invalid]="checkout.invalid && checkout.touched" name="checkout"
+                    [(ngModel)]="bookingForm.checkout" #checkout="ngModel" required>
+
+                <small class="text-warning" [class.d-none]="checkout.valid || checkout.untouched">Check out date is
+                    required.</small>
+            </div>
+
+            <small class="text-warning" [class.d-none]="(checkin.pristine || checkout.pristine) || !dateHasError">Please
+                select appropriate
+                dates.</small>
+
+
+            <button type=" submit" class="btn btn-secondary"
+                [disabled]="bookForm.form.invalid || stateHasError || dateHasError">Book</button>
+
+
+        </form>
+    </div>
+</div>

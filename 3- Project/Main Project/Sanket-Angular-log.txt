@@ -1,0 +1,19 @@
+1. Created Overall structure of the Website using Angular Component based architecture. (navbar, left-nav, right-nav).	
+	- Styling using Bootstrap Bootswatch.
+	- Flexible look and feel
+	- Added Logo for the Website
+
+2. Created Quick Booking, with various client side validations. (TDF)
+	-Eg : difference between checkin and checkout date must be atleast of 1 day.
+	      Submit button disabled until all the form fields are valid.
+
+3. Created Login, with various client side validations. (TDF)
+
+	-Session created for that particular user.
+	-Some extra links visible.
+	-Login Link is converted to Logout
+	-On Logout session dies.
+
+4. Created Route guard, so that without login certain links cannot be accessed.
+
+5. Created Service layer for StaffLogin.

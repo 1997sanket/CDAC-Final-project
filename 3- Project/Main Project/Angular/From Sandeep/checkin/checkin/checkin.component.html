@@ -1,0 +1,38 @@
+
+<!--Display form to Enter booking id-->
+<div class="card bg-light" style="margin-top: 20px;" *ngIf="!ifBidSet">
+    <div class=" card-header">Check IN</div>
+    <div class="card-body" >
+
+
+        <form #checkinform="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+
+            2 way data binding = {{bid}}
+
+            <hr>
+
+            <div class="form-group">
+                <label for="">Booking Id</label>
+                <input type="text" class="form-control" [class.is-invalid]=" bookid.touched &&  bookid.invalid" name=" bid"
+                    [(ngModel)]="bid" #bookid="ngModel" required>
+
+                <small class="text-danger" [class.d-none]=" bookid.valid ||  bookid.untouched">Booking Id is
+                    required.</small>
+            </div>
+
+            <button [disabled]="checkinform.form.invalid" type="submit" class="btn btn-primary"
+                style="margin-bottom: 10px;">
+                submit
+            </button>
+
+            
+
+        </form>
+    </div>
+</div>
+
+<!--Display this after entering boking id-->
+<div *ngIf="ifBidSet">
+    You Entered {{bid}}
+</div>
